@@ -19,7 +19,7 @@
       $ car create-application-version --app-id app-xxx --name xxx --type zip
       ...
 
-- `car upload-application-version-file` : 上传应用版本文件，需填写应用app-id、本地路径(注意windows和linux路径格式)和应用版本version-id，请确保app-id和version-id正确，若创建应用或创建应用新版本中，上传文件任务失败，请执行本命令，同时确保本地文件路径不变，上传成功后，版本名称和包格式会被替换为所上传文件的名字和格式，样例：
+- `car upload-application-version-file` : 上传应用版本文件，需填写应用app-id、本地路径(注意windows和linux路径格式)和应用版本version-id，请确保app-id和version-id正确，上传成功后，版本名称和包格式会被替换为所上传文件的名字和格式，样例：
 
       $ car upload-application-version-file --app-id app-xxx --path C:\\data\\xxx.zip --version-id ver-xxx
       $ car upload-application-version-file --app-id app-xxx --path /data/xxx.zip --version-id ver-xxx

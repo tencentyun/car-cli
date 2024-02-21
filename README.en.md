@@ -19,7 +19,7 @@
       $ car create-application-version --app-id app-xxx --name xxx --type zip
       ...
 
-- `car upload-application-version-file` : Upload application version file, you need to fill in the application app-id, local path (note the format of windows and linux paths) and application version version-id, please ensure that the app-id and version-id are correct. If the file upload task fails during the creation of the application or the creation of a new version of the application, please execute this command and ensure that the local file path remains unchanged. After the upload is successful, the version name and version package format will be replaced with the name and format of the uploaded file, example:
+- `car upload-application-version-file` : Upload application version file, you need to fill in the application app-id, local path (note the format of windows and linux paths) and application version version-id, please ensure that the app-id and version-id are correct. After the upload is successful, the version name and version package format will be replaced with the name and format of the uploaded file, example:
 
       $ car upload-application-version-file --app-id app-xxx --path C:\\data\\xxx.zip --version-id ver-xxx
       $ car upload-application-version-file --app-id app-xxx --path /data/xxx.zip --version-id ver-xxx
