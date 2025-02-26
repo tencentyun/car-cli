@@ -14,7 +14,7 @@
       $ car create-application --name xxx
       ...
 
-- `car create-application-version` : Create a new version of the application, the limit for creating versions under the same application is 5, you need to fill in the application app-id, version name, and application type (zip/rar/7z). If there is a version of "Creating/Normal/CreateFailed", the operation will be rejected. The application version distribution regions and application version update mode are optional. For the regions, please refer to the distribution regions list in the document. The update mode supports full update (FULL) and incremental update (INCREMENT).The fusion region does not support incremental updates, example:
+- `car create-application-version` : Create a new version of the application, the limit for creating versions under the same application is 5, you need to fill in the application app-id, version name, and application type (zip/rar/7z). If there is a version of "Creating/Normal/CreateFailed", the operation will be rejected. The application version distribution regions and application version update mode are optional. For the regions, please refer to the distribution regions list in the document. The update mode supports full update (FULL), example:
 
       $ car create-application-version --app-id app-xxx --name xxx --type zip --regions ap-chinese-mainland,ap-tokyo --update-mode FULL
       ...
@@ -46,8 +46,8 @@
 - Replace the SecretId, SecretKey, and AppId of your Tencent Cloud account, **ensure that the executable file and the configuration file are in the same directory when using this tool**
 
 # Application version distribution region
-- ap-chinese-mainland     // 中国大陆(mainland region default) 
-- ap-tokyo                // 东京标准区(international region default)
+- ap-chinese-mainland     // 中国大陆(mainland default) 
+- ap-tokyo                // 东京标准区(international default)
 - ap-tokyo-fusion         // 东京融合区
 - ap-seoul                // 首尔标准区
 - ap-seoul-fusion         // 首尔融合区

@@ -14,7 +14,7 @@
       $ car create-application --name xxx
       ...
 
-- `car create-application-version` : 创建应用新版本，同一应用下版本创建数量上限为5个，需填写应用app-id，版本命名和应用格式(zip/rar/7z), 若有"创建中/待发布/创建失败"的版本，则操作会被拒绝。应用版本分发地区以及应用版本更新方式为可选项，地区请参考文档中分发地区列表，更新方式支持全量更新(FULL)和增量更新(INCREMENT)，融合区不支持增量更新，样例：
+- `car create-application-version` : 创建应用新版本，同一应用下版本创建数量上限为5个，需填写应用app-id，版本命名和应用格式(zip/rar/7z), 若有"创建中/待发布/创建失败"的版本，则操作会被拒绝。应用版本分发地区以及应用版本更新方式为可选项，地区请参考文档中分发地区列表，更新方式支持全量更新(FULL)，样例：
 
       $ car create-application-version --app-id app-xxx --name xxx --type zip --regions ap-chinese-mainland,ap-tokyo --update-mode FULL
       ...
