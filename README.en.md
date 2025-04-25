@@ -19,10 +19,11 @@
       $ car create-application-version --app-id app-xxx --name xxx --type zip --regions ap-chinese-mainland,ap-tokyo --update-mode FULL
       ...
 
-- `car upload-application-version-file` : Upload application version file, you need to fill in the application app-id, local path (note the format of windows and linux paths) and application version version-id, please ensure that the app-id and version-id are correct. After the upload is successful, the version name and version package format will be replaced with the name and format of the uploaded file, example:
+-- `car upload-application-version-file` : Upload application version file, you need to fill in the application app-id, local path (note the format of windows and linux paths) and application version version-id, please ensure that the app-id and version-id are correct. After the upload is successful, the version name and version package format will be replaced with the name and format of the uploaded file. If you use a URL to upload an application, you only need to enter the app-id and url，example:
 
       $ car upload-application-version-file --app-id app-xxx --path C:\\data\\xxx.zip --version-id ver-xxx
       $ car upload-application-version-file --app-id app-xxx --path /data/xxx.zip --version-id ver-xxx
+      $ car upload-application-version-file --app-id app-xxx --url xxx
       ...
 
 - `car set-version-online` : Publish application version, you need to fill in the application app-id and application version version-id, example:

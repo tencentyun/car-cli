@@ -19,10 +19,11 @@
       $ car create-application-version --app-id app-xxx --name xxx --type zip --regions ap-chinese-mainland,ap-tokyo --update-mode FULL
       ...
 
-- `car upload-application-version-file` : 上传应用版本文件，需填写应用app-id、本地路径(注意windows和linux路径格式)和应用版本version-id，请确保app-id和version-id正确，上传成功后，版本名称和包格式会被替换为所上传文件的名字和格式，样例：
+- `car upload-application-version-file` : 上传应用版本文件，需填写应用app-id、本地路径(注意windows和linux路径格式)和应用版本version-id，请确保app-id和version-id正确，上传成功后，版本名称和包格式会被替换为所上传文件的名字和格式，若使用url上传应用，则只需输入app-id和url即可。样例：
 
       $ car upload-application-version-file --app-id app-xxx --path C:\\data\\xxx.zip --version-id ver-xxx
       $ car upload-application-version-file --app-id app-xxx --path /data/xxx.zip --version-id ver-xxx
+      $ car upload-application-version-file --app-id app-xxx --url xxx
       ...
 
 - `car set-version-online` : 发布应用版本，需填写应用app-id和应用版本version-id，样例：
