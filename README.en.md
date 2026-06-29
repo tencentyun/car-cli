@@ -9,34 +9,36 @@
 
       car help
 
-- `car create-application` : Create a new application, you need to fill in the application name, which only supports Chinese, letters, numbers, or the connector "-" (within 16 characters), example:
+- `car create-application` : Create a new application. The application name only supports Chinese characters, letters, numbers, or hyphens `-` within 16 characters. Use `--app-type` to specify the application type. If omitted, the default is desktop `Application3D`. Supported values are `Application3D`, `ApplicationXR`, `ApplicationAPK`, and `ApplicationWeb`; use `ApplicationAPK` for mobile applications. Note that `--app-type` means application type, while `create-application-version --type` means package file type. Examples:
 
       $ car create-application --name xxx
+      $ car create-application --name mobile-xxx --app-type ApplicationAPK
       ...
 
-- `car create-application-version` : Create a new version of the application, the limit for creating versions under the same application is 5, you need to fill in the application app-id, version name, and application type (zip/rar/7z). If there is a version of "Creating/Normal/CreateFailed", the operation will be rejected. The application version distribution regions and application version update mode are optional. For the regions, please refer to the distribution regions list in the document. The update mode supports full update (FULL), example:
+- `car create-application-version` : Create a new version for an application. The number of versions under the same application cannot exceed 5. You need to provide the application `app-id`, version name, and package type. Desktop applications support `zip`/`rar`/`7z`; mobile applications support `apk`/`xapk`/`zip`. The backend validates the package type against the actual application type. If there is a version in `Creating`/`Normal`/`CreateFailed`, the operation will be rejected. `--regions` and `--update-mode` only take effect for desktop applications: pass them when desktop distribution regions or update mode are needed; mobile applications do not need these two parameters. Example:
 
       $ car create-application-version --app-id app-xxx --name xxx --type zip --regions ap-chinese-mainland,ap-tokyo --update-mode FULL
+      $ car create-application-version --app-id app-xxx --name mobile-v1 --type apk
       ...
 
--- `car upload-application-version-file` : Upload application version file, you need to fill in the application app-id, local path (note the format of windows and linux paths) and application version version-id, please ensure that the app-id and version-id are correct. After the upload is successful, the version name and version package format will be replaced with the name and format of the uploaded file. If you use a URL to upload an application, you only need to enter the app-id and url，example:
+- `car upload-application-version-file` : Upload an application version file. Provide the application `app-id`, local path, and application `version-id` for local upload. Make sure the `app-id` and `version-id` are correct. After upload succeeds, the version name and package type will be replaced by the uploaded file name and type. For URL upload, only `app-id` and `url` are required. Examples:
 
-      $ car upload-application-version-file --app-id app-xxx --path C:\\data\\xxx.zip --version-id ver-xxx
-      $ car upload-application-version-file --app-id app-xxx --path /data/xxx.zip --version-id ver-xxx
+      $ car upload-application-version-file --app-id app-xxx --path C:\data\xxx.zip --version-id ver-xxx
+      $ car upload-application-version-file --app-id app-xxx --path /data/xxx.apk --version-id ver-xxx
       $ car upload-application-version-file --app-id app-xxx --url xxx
       ...
 
-- `car set-version-online` : Publish application version, you need to fill in the application app-id and application version version-id, example:
+- `car set-version-online` : Publish an application version. Provide the application `app-id` and `version-id`. Desktop applications keep launch path validation; mobile applications skip that validation automatically. Example:
 
       $ car set-version-online --app-id app-xxx --version-id ver-xxx
       ...
 
-- `car delete-application-version` : Delete application version, you need to fill in the application app-id and application version version-id. The deletion is asynchronous, and you can check whether the deletion is successful by using "describe-application-version", example:
+- `car delete-application-version` : Delete an application version. Provide the application `app-id` and `version-id`. Deletion is asynchronous; use `describe-application-version` to check the result. Example:
 
       $ car delete-application-version --app-id app-xxx --version-id ver-xxx
       ...
 
-- `car describe-application-version` : Display application version list, you need to fill in the application app-id. The command outputs the version id and version status, and the oldest version can be obtained through grep and awk commands, example:
+- `car describe-application-version` : Display application version list. Provide the application `app-id`. The command outputs version id and status. Example:
 
       $ car describe-application-version --app-id app-xxx
       $ car describe-application-version --app-id app-xxx | grep -v "Inuse" | awk '{print $1}' | head -n 1
@@ -44,19 +46,20 @@
 
 # Configuration File
 
-- Replace the SecretId, SecretKey, and AppId of your Tencent Cloud account, **ensure that the executable file and the configuration file are in the same directory when using this tool**
+- Replace the `SecretId`, `SecretKey`, and `AppId` of your Tencent Cloud account. **Ensure that the executable file and the configuration file are in the same directory when using this tool.**
 
-# Application version distribution region
-- ap-chinese-mainland     // 中国大陆(mainland default) 
-- ap-tokyo                // 东京标准区(international default)
-- ap-tokyo-fusion         // 东京融合区
-- ap-seoul                // 首尔标准区
-- ap-seoul-fusion         // 首尔融合区
-- ap-singapore            // 新加坡标准区
-- ap-singapore-fusion     // 新加坡融合区
-- eu-frankfurt            // 法兰克福标准区
-- eu-frankfurt-fusion     // 法兰克福融合区
-- na-north-america        // 北美标准区
-- na-north-america-fusion // 北美融合区
-- me-middle-east-fusion   // 中东融合区
-- sa-south-america-fusion // 南美融合区
+# Application Version Distribution Regions
+
+- ap-chinese-mainland     // Chinese mainland (mainland default)
+- ap-tokyo                // Tokyo standard region (international default)
+- ap-tokyo-fusion         // Tokyo fusion region
+- ap-seoul                // Seoul standard region
+- ap-seoul-fusion         // Seoul fusion region
+- ap-singapore            // Singapore standard region
+- ap-singapore-fusion     // Singapore fusion region
+- eu-frankfurt            // Frankfurt standard region
+- eu-frankfurt-fusion     // Frankfurt fusion region
+- na-north-america        // North America standard region
+- na-north-america-fusion // North America fusion region
+- me-middle-east-fusion   // Middle East fusion region
+- sa-south-america-fusion // South America fusion region
